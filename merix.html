@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מרפאת אוגדה 96 — משוב וביקורת</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #6BAE9E;
+      --teal-light: #EAF5F2;
+      --teal-dark:  #4D9080;
+      --text:       #2D3748;
+      --muted:      #718096;
+      --bg:         #F7FAFA;
+      --white:      #FFFFFF;
+      --radius:     14px;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #E2EDE9;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 12px rgba(107,174,158,0.08);
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--teal);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .clinic-name { font-size: 1.1rem; font-weight: 700; }
+    .clinic-sub  { font-size: 0.76rem; color: var(--muted); font-weight: 300; }
+    .badge { background: var(--teal-light); color: var(--teal-dark); font-size: 0.75rem; font-weight: 500; padding: 5px 14px; border-radius: 999px; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 52px 24px 32px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-icon {
+      width: 68px; height: 68px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .hero-icon svg { width: 32px; height: 32px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hero h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+    .hero p  { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    .chips {
+      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+      padding: 0 24px 36px; max-width: 600px; margin: 0 auto;
+    }
+
+    .chip {
+      background: var(--white);
+      border: 1px solid #D8EDE8;
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Form ── */
+    .form-outer {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    form {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid #E2EDE9;
+      box-shadow: 0 4px 24px rgba(107,174,158,0.10);
+      overflow: hidden;
+    }
+
+.form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid #E2EDE9;
+      box-shadow: 0 4px 24px rgba(107,174,158,0.10);
+      overflow: hidden;
+    }
+
+    .form-card iframe {
+      width: 100%;
+      height: 900px;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 560px) {
+      .form-card iframe { height: 1000px; }
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid #E2EDE9;
+      background: var(--white);
+    }
+
+    footer strong { color: var(--teal); }
+
+    @media (max-width: 560px) {
+      header { padding: 14px 18px; }
+      .section-body { padding: 20px 18px 4px; }
+      .section-label { padding: 20px 18px 0; }
+      .submit-area { padding: 16px 18px 28px; }
+      .hero h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo-area">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+    <div>
+      <div class="clinic-name">מרפאת אוגדה 96</div>
+      <div class="clinic-sub">שירות רפואי איכותי</div>
+    </div>
+  </div>
+  <div class="badge">משוב מטופלים</div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  </div>
+  <h1>חוות דעתך חשובה לנו</h1>
+  <p>ספר לנו על חוויית הביקור שלך — זה ייקח פחות מדקתיים וכל תגובה עוזרת לנו להשתפר.</p>
+</section>
+
+<div class="chips">
+  <div class="chip">🔒 אנונימי לחלוטין</div>
+  <div class="chip">⏱ פחות מ-2 דקות</div>
+  <div class="chip">💬 כל משוב נקרא</div>
+</div>
+
+<!-- Form -->
+<div class="form-outer">
+  <div class="form-card">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSccscGuqcv-TpMkMLPFDH4eb_tcmesZNtg3W1uMcJhHLmiBvg/viewform?embedded=true"
+      title="טופס משוב מרפאת אוגדה 96">
+      טוען…
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  <strong>מרפאת אוגדה 96</strong> &nbsp;·&nbsp; כל הזכויות שמורות &nbsp;·&nbsp; הטופס מאובטח ואנונימי
+</footer>
+
+</body>
+</html>
