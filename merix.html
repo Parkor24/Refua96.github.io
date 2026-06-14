@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מרפאת אוגדה 96 — משוב וביקורת</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #6BAE9E;
+      --teal-light: #EAF5F2;
+      --teal-dark:  #4D9080;
+      --text:       #2D3748;
+      --muted:      #718096;
+      --bg:         #F7FAFA;
+      --white:      #FFFFFF;
+      --radius:     14px;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #E2EDE9;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 12px rgba(107,174,158,0.08);
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--teal);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .clinic-name { font-size: 1.1rem; font-weight: 700; }
+    .clinic-sub  { font-size: 0.76rem; color: var(--muted); font-weight: 300; }
+    .badge { background: var(--teal-light); color: var(--teal-dark); font-size: 0.75rem; font-weight: 500; padding: 5px 14px; border-radius: 999px; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 52px 24px 32px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-icon {
+      width: 68px; height: 68px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .hero-icon svg { width: 32px; height: 32px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hero h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+    .hero p  { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    .chips {
+      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+      padding: 0 24px 36px; max-width: 600px; margin: 0 auto;
+    }
+
+    .chip {
+      background: var(--white);
+      border: 1px solid #D8EDE8;
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Form ── */
+    .form-outer {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    form {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid #E2EDE9;
+      box-shadow: 0 4px 24px rgba(107,174,158,0.10);
+      overflow: hidden;
+    }
+
+    .section-bar {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      padding: 22px 28px;
+      color: white;
+    }
+
+    .section-bar h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 2px; }
+    .section-bar p  { font-size: 0.84rem; opacity: 0.85; font-weight: 300; }
+
+    .section-body { padding: 28px 28px 8px; }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid #EBF4F1;
+      margin: 4px 0 20px;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 24px 28px 0;
+    }
+
+    .field { margin-bottom: 24px; }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    label .req { color: var(--teal); margin-right: 3px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #D1E8E2;
+      border-radius: 10px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.93rem;
+      color: var(--text);
+      background: #FAFEFE;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      direction: rtl;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(107,174,158,0.15);
+      background: var(--white);
+    }
+
+    textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+    select { cursor: pointer; }
+
+    /* rating scale */
+    .scale-wrap {
+      display: flex;
+      align-items: center;
+      background: #F0F9F7;
+      border: 1.5px solid #D1E8E2;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .scale-wrap input[type="radio"] { display: none; }
+
+    .scale-wrap label {
+      flex: 1;
+      text-align: center;
+      padding: 12px 6px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin: 0;
+      border-left: 1px solid #D8EDE8;
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+    }
+
+    .scale-wrap label:last-of-type { border-left: none; }
+
+    .scale-wrap input[type="radio"]:checked + label {
+      background: var(--teal);
+      color: white;
+      font-weight: 600;
+    }
+
+    .scale-wrap label:hover { background: var(--teal-light); color: var(--teal-dark); }
+
+    .scale-hints {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.73rem;
+      color: var(--muted);
+      margin-top: 5px;
+      padding: 0 2px;
+    }
+
+    /* yes/no toggle */
+    .toggle-wrap { display: flex; gap: 12px; }
+    .toggle-wrap input[type="radio"] { display: none; }
+
+    .toggle-wrap label {
+      flex: 1;
+      text-align: center;
+      padding: 11px;
+      border: 1.5px solid #D1E8E2;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 0;
+      transition: all 0.15s;
+    }
+
+    .toggle-wrap input[type="radio"]:checked + label {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+
+    #email-field {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed #D1E8E2;
+    }
+
+    /* submit */
+    .submit-area {
+      padding: 20px 28px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 48px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(77,144,128,0.35);
+      width: 100%;
+      max-width: 320px;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(77,144,128,0.45);
+    }
+
+    /* thank you */
+    #thank-you {
+      display: none;
+      text-align: center;
+      padding: 60px 28px;
+    }
+
+    #thank-you .ty-icon {
+      width: 72px; height: 72px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    #thank-you .ty-icon svg { width: 34px; height: 34px; stroke: var(--teal); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    #thank-you h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+    #thank-you p  { font-size: 0.97rem; color: var(--muted); line-height: 1.7; max-width: 400px; margin: 0 auto; }
+
+    /* footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid #E2EDE9;
+      background: var(--white);
+    }
+
+    footer strong { color: var(--teal); }
+
+    @media (max-width: 560px) {
+      header { padding: 14px 18px; }
+      .section-body { padding: 20px 18px 4px; }
+      .section-label { padding: 20px 18px 0; }
+      .submit-area { padding: 16px 18px 28px; }
+      .hero h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo-area">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+    <div>
+      <div class="clinic-name">מרפאת אוגדה 96</div>
+      <div class="clinic-sub">שירות רפואי איכותי</div>
+    </div>
+  </div>
+  <div class="badge">משוב מטופלים</div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  </div>
+  <h1>חוות דעתך חשובה לנו</h1>
+  <p>ספר לנו על חוויית הביקור שלך — זה ייקח פחות מדקתיים וכל תגובה עוזרת לנו להשתפר.</p>
+</section>
+
+<div class="chips">
+  <div class="chip">🔒 אנונימי לחלוטין</div>
+  <div class="chip">⏱ פחות מ-2 דקות</div>
+  <div class="chip">💬 כל משוב נקרא</div>
+</div>
+
+<!-- Form -->
+<div class="form-outer">
+  <form id="feedback-form" novalidate>
+
+    <div class="section-bar">
+      <h2>טופס משוב וביקורת</h2>
+      <p>מלא את הטופס לאחר ביקורך במרפאה</p>
+    </div>
+
+    <!-- Section 1 -->
+    <p class="section-label">פרטי הביקור</p>
+    <div class="section-body">
+
+      <div class="field">
+        <label for="visit-date">מתי ביקרת?</label>
+        <input type="date" id="visit-date" name="visit_date">
+      </div>
+
+      <div class="field">
+        <label for="department">מחלקה או רופא</label>
+        <select id="department" name="department">
+          <option value="" disabled selected>בחר מחלקה...</option>
+          <option>רפואה כללית</option>
+          <option>ילדים</option>
+          <option>גינקולוגיה</option>
+          <option>אורתופדיה</option>
+          <option>עור</option>
+          <option>אחר</option>
+        </select>
+      </div>
+
+    </div>
+    <hr class="section-divider">
+
+    <!-- Section 2 -->
+    <p class="section-label">דירוג חוויית הביקור</p>
+    <div class="section-body">
+
+      <div class="field">
+        <label><span class="req">*</span>זמן המתנה</label>
+        <div class="scale-wrap">
+          <input type="radio" name="wait_time" id="wt1" value="1"><label for="wt1">1</label>
+          <input type="radio" name="wait_time" id="wt2" value="2"><label for="wt2">2</label>
+          <input type="radio" name="wait_time" id="wt3" value="3"><label for="wt3">3</label>
+          <input type="radio" name="wait_time" id="wt4" value="4"><label for="wt4">4</label>
+          <input type="radio" name="wait_time" id="wt5" value="5"><label for="wt5">5</label>
+        </div>
+        <div class="scale-hints"><span>ארוך מדי</span><span>מהיר מאוד</span></div>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>ידידותיות הצוות</label>
+        <div class="scale-wrap">
+          <input type="radio" name="staff" id="st1" value="1"><label for="st1">1</label>
+          <input type="radio" name="staff" id="st2" value="2"><label for="st2">2</label>
+          <input type="radio" name="staff" id="st3" value="3"><label for="st3">3</label>
+          <input type="radio" name="staff" id="st4" value="4"><label for="st4">4</label>
+          <input type="radio" name="staff" id="st5" value="5"><label for="st5">5</label>
+        </div>
+        <div class="scale-hints"><span>לא ידידותי</span><span>מצוין</span></div>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>מקצועיות הרופא</label>
+        <div class="scale-wrap">
+          <input type="radio" name="doctor" id="dr1" value="1"><label for="dr1">1</label>
+          <input type="radio" name="doctor" id="dr2" value="2"><label for="dr2">2</label>
+          <input type="radio" name="doctor" id="dr3" value="3"><label for="dr3">3</label>
+          <input type="radio" name="doctor" id="dr4" value="4"><label for="dr4">4</label>
+          <input type="radio" name="doctor" id="dr5" value="5"><label for="dr5">5</label>
+        </div>
+        <div class="scale-hints"><span>לא מקצועי</span><span>מצוין</span></div>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>ניקיון המרפאה</label>
+        <div class="scale-wrap">
+          <input type="radio" name="cleanliness" id="cl1" value="1"><label for="cl1">1</label>
+          <input type="radio" name="cleanliness" id="cl2" value="2"><label for="cl2">2</label>
+          <input type="radio" name="cleanliness" id="cl3" value="3"><label for="cl3">3</label>
+          <input type="radio" name="cleanliness" id="cl4" value="4"><label for="cl4">4</label>
+          <input type="radio" name="cleanliness" id="cl5" value="5"><label for="cl5">5</label>
+        </div>
+        <div class="scale-hints"><span>לא נקי</span><span>נקי מאוד</span></div>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>שביעות רצון כללית</label>
+        <div class="scale-wrap">
+          <input type="radio" name="overall" id="ov1" value="1"><label for="ov1">1</label>
+          <input type="radio" name="overall" id="ov2" value="2"><label for="ov2">2</label>
+          <input type="radio" name="overall" id="ov3" value="3"><label for="ov3">3</label>
+          <input type="radio" name="overall" id="ov4" value="4"><label for="ov4">4</label>
+          <input type="radio" name="overall" id="ov5" value="5"><label for="ov5">5</label>
+        </div>
+        <div class="scale-hints"><span>מאוכזב מאוד</span><span>מרוצה מאוד</span></div>
+      </div>
+
+    </div>
+    <hr class="section-divider">
+
+    <!-- Section 3 -->
+    <p class="section-label">בדבריך שלך</p>
+    <div class="section-body">
+
+      <div class="field">
+        <label for="went-well"><span class="req">*</span>מה הלך טוב בביקורך?</label>
+        <textarea id="went-well" name="went_well" placeholder="ספר לנו מה אהבת..."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="improve">מה יכולנו לעשות טוב יותר?</label>
+        <textarea id="improve" name="improve" placeholder="כל הערה עוזרת לנו להשתפר..."></textarea>
+      </div>
+
+    </div>
+    <hr class="section-divider">
+
+    <!-- Section 4 -->
+    <p class="section-label">יצירת קשר (אופציונלי)</p>
+    <div class="section-body">
+
+      <div class="field">
+        <label>האם תרצה שניצור איתך קשר?</label>
+        <div class="toggle-wrap">
+          <input type="radio" name="followup" id="fu-yes" value="yes">
+          <label for="fu-yes">כן, בבקשה</label>
+          <input type="radio" name="followup" id="fu-no" value="no">
+          <label for="fu-no">לא, תודה</label>
+        </div>
+      </div>
+
+      <div id="email-field" class="field">
+        <label for="email">כתובת המייל שלך</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" dir="ltr">
+      </div>
+
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-area">
+      <button type="submit">שלח משוב</button>
+    </div>
+
+    <!-- Thank you -->
+    <div id="thank-you">
+      <div class="ty-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>תודה רבה!</h2>
+      <p>הקדשת מזמנך ושיתפת אותנו בחוויה שלך. המשוב שלך מגיע ישירות לצוות שלנו ועוזר לנו לספק טיפול טוב ואנושי יותר. אנחנו מודים לך שבחרת בנו — ומקווים לראותך שוב בבריאות טובה.</p>
+    </div>
+
+  </form>
+</div>
+
+<footer>
+  <strong>מרפאת אוגדה 96</strong> &nbsp;·&nbsp; כל הזכויות שמורות &nbsp;·&nbsp; הטופס מאובטח ואנונימי
+</footer>
+
+<script>
+  document.querySelectorAll('input[name="followup"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      document.getElementById('email-field').style.display = this.value === 'yes' ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('feedback-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var ratings = ['wait_time','staff','doctor','cleanliness','overall'];
+    var labels  = ['זמן המתנה','ידידותיות הצוות','מקצועיות הרופא','ניקיון המרפאה','שביעות רצון כללית'];
+
+    for (var i = 0; i < ratings.length; i++) {
+      if (!document.querySelector('input[name="' + ratings[i] + '"]:checked')) {
+        alert('נא לדרג: ' + labels[i]);
+        return;
+      }
+    }
+
+    if (!document.getElementById('went-well').value.trim()) {
+      alert('נא למלא את שדה: מה הלך טוב בביקורך?');
+      return;
+    }
+
+    document.querySelectorAll('.section-bar, .section-body, .section-label, .section-divider, .submit-area')
+      .forEach(function(el) { el.style.display = 'none'; });
+    document.getElementById('thank-you').style.display = 'block';
+    document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
